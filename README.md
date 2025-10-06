@@ -10,12 +10,12 @@ A reproducible framework to:
 - Interpret spatial heterogeneity via pixel-wise SHAP
 
 ## Quick Start
-
+```
 1. **Export climate data** from GEE:
    ```js
    // Run gee/export_climate_covariates.js in GEE Code Editor
 ```
-```
+
 Prepare data in data/raw/ and data/external/
 Run analysis:
 
