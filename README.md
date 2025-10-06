@@ -2,6 +2,7 @@
 
 # PI-GW-NDVI: Physically-Informed Groundwater-Vegetation Diagnostics
 
+```markdown
 A reproducible framework to:
 - Avoid pure data-driven pitfalls via physics-informed ML
 - Align GRACE (150km) with MODIS/Sentinel (10m–500m) via spatial aggregation
@@ -13,7 +14,8 @@ A reproducible framework to:
 1. **Export climate data** from GEE:
    ```js
    // Run gee/export_climate_covariates.js in GEE Code Editor
-
+```
+```
 Prepare data in data/raw/ and data/external/
 Run analysis:
 
