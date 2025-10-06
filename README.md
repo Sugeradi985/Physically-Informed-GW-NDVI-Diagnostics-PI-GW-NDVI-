@@ -13,3 +13,11 @@ A reproducible framework to:
 1. **Export climate data** from GEE:
    ```js
    // Run gee/export_climate_covariates.js in GEE Code Editor
+
+Prepare data in data/raw/ and data/external/
+Run analysis:
+
+```bash
+conda env create -f environment.yml
+jupyter notebook notebooks/gw_ndvi_diagnosis.ipynb
+```
