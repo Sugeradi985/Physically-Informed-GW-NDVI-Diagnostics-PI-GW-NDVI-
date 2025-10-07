@@ -1,3 +1,12 @@
+# 空间 SHAP 制图（每个像元的特征贡献）
+# 基于训练好的 XGBoost 模型
+# 输出 NetCDF 格式 SHAP 贡献图（可直接用 QGIS / Panoply 可视化）
+# 支持任意特征（如 NDVI_lag1, Precip）
+# 输出示例：
+# shap_maps/shap_NDVI.nc
+# shap_maps/shap_NDVI_lag1.nc
+# shap_maps/shap_Precip.nc
+
 # spatial_shap_mapper.py
 import xarray as xr
 import numpy as np
