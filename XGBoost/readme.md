@@ -15,29 +15,46 @@
 📦 所需依赖
 ```bash
 pip install xgboost scikit-learn matplotlib seaborn
-
+```
 
 🧠 完整代码：xgboost_gw_ndvi_diagnosis.py
 
 
-使用示例
+### 使用示例
+回归任务（带气候变量 + 滞后）
 ```bash
-python xgboost_gw_ndvi_diagnosis.py \
-  --delta_gw "results/delta_gw_mdb_2002_2024.nc" \
-  --ndvi "data/ndvi/ndvi_mdb_2002_2024.nc" \
-  --plot-scatter "figures/xgb_gw_ndvi_scatter.png" \
-  --plot-spatial-r2 "figures/xgb_gw_ndvi_spatial_r2.png"
+python xgboost_gw_diagnosis_enhanced.py \
+  --delta_gw "results/delta_gw.nc" \
+  --ndvi "data/ndvi.nc" \
+  --precip "data/precip.nc" \
+  --temp "data/temp.nc" \
+  --task regression \
+  --shap-summary "figures/shap_summary_reg.png" \
+  --shap-dependence "figures/shap_dependence_ndvi_precip.png"
+```
 
+分类任务（ΔGW 上升/下降）
+```bash
+python xgboost_gw_diagnosis_enhanced.py \
+  --delta_gw "results/delta_gw.nc" \
+  --ndvi "data/ndvi.nc" \
+  --precip "data/precip.nc" \
+  --task classification \
+  --shap-summary "figures/shap_summary_cls.png"
+```
 
 📊 输出解读
-输出	含义
-R² > 0.3	NDVI 与 ΔGW 有较强相关性（植被响应地下水变化）
-R² ≈ 0	无显著关系（可能灌溉主导、或滞后效应未考虑）
-空间 R² 图	可识别“植被-地下水耦合区”（如天然植被区）vs “人为干扰区”（如农田）
+输出	                                    说明
+SHAP Summary (Beeswarm)	      显示哪些特征最重要（如 NDVI_lag1 > NDVI 表明植被响应有滞后）
+SHAP Dependence Plot	        揭示非线性关系（如高 NDVI 时降水对 ΔGW 影响更强）
+分类准确率 > 60%	              表明自然系统中植被-水文存在可预测的耦合机制
+R² 提升（加入滞后/气候）	      证明时序动态与外部驱动的重要性
 
 
-🔜 后续增强建议
-添加 滞后 NDVI 特征（如 t-1, t-2 月）
-引入 气候变量（降水、温度）作为协变量
-使用 SHAP 值解释非线性关系（shap 库）
-转为 分类任务：ΔGW 上升/下降 vs NDVI 变化趋势
+📦 依赖安装
+```bash
+pip install xgboost shap scikit-learn xarray pandas matplotlib seaborn
+```
+💡 提示：首次运行 shap 可能较慢（需编译），建议使用 conda install -c conda-forge shap 加速。
+
+
