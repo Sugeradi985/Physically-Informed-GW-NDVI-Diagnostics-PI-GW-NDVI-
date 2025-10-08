@@ -19,6 +19,7 @@ var ndviResolution = 500; // 单位：米（如 MODIS NDVI）
 var exportBucket = 'your-gcs-bucket'; // Google Cloud Storage
 
 // ========== 数据源 ==========
+// Precipitation (CHIRPS)
 var precip = ee.ImageCollection('UCSB-CHG/CHIRPS/DAILY')
   .filterDate(startDate, endDate)
   .select('precipitation')
@@ -26,6 +27,7 @@ var precip = ee.ImageCollection('UCSB-CHG/CHIRPS/DAILY')
     return img.clip(region).rename('Precip');
   });
 
+// Temperature (ERA5-Land, convert K to °C)
 var temp = ee.ImageCollection('ECMWF/ERA5_LAND/HOURLY')
   .filterDate(startDate, endDate)
   .select('temperature_2m')
