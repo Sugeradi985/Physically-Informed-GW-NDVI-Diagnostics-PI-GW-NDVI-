@@ -1,0 +1,15 @@
+name: pi-gw-ndvi
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - xarray
+  - rioxarray
+  - lightgbm
+  - shap
+  - pandas
+  - jupyter
+  - scipy
+  - pip
+  - pip:
+    - pyyaml
