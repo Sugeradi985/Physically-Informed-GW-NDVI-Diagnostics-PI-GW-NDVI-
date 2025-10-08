@@ -1,3 +1,9 @@
+# 滞后阶数自动选择：基于 ACF（自相关函数）
+# 思路
+# 对每个变量（如 NDVI），计算其 空间平均时间序列 的 ACF；
+# 选取 ACF 绝对值 > 阈值（如 0.2）的滞后期；
+# 最大滞后不超过 max_lag（如 6 个月）。
+
 # src/features/auto_lag_selection.py
 """
 Automatically select significant lag steps using autocorrelation function (ACF).
