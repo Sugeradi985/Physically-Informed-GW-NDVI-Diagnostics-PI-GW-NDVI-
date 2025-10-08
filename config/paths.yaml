@@ -1,0 +1,5 @@
+# Path configuration
+data_raw: "data/raw"
+data_external: "data/external"
+output: "output"
+gee_bucket: "gs://your-gcs-bucket"
