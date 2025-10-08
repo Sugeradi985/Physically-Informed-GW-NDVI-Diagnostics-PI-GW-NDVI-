@@ -1,5 +1,3 @@
-# Physically-Informed-GW-NDVI-Diagnostics-PI-GW-NDVI-
-
 # PI-GW-NDVI: Physically-Informed Groundwater-Vegetation Diagnostics
 
 ```markdown
@@ -22,6 +20,23 @@ Run analysis:
 
 ```bash
 conda env create -f environment.yml
+jupyter notebook notebooks/gw_ndvi_diagnosis.ipynb
+```
+
+Place data:
+data/raw/grace_delta_gw.nc
+data/raw/ndvi.nc
+data/raw/Precip.nc, Temp.nc
+data/external/gmia_irrigation.nc (optional)
+
+Setup environment:
+```bash
+conda env create -f environment.yml
+conda activate pi-gw-ndvi
+```
+
+Run analysis:
+```bash
 jupyter notebook notebooks/gw_ndvi_diagnosis.ipynb
 ```
 
